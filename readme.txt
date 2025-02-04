@@ -1,0 +1,1 @@
+table attributes: (SNO , name, rating, location, reviews)

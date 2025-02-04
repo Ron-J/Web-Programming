@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best medical providers</title>
+    <!--link rel="stylesheet" href="stylesheets/search.css"!-->
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <form action="{{ url_for('search')}}" method="post">
+        <h1>Search By</h1>
+        <input type="radio" name="searchby" value="1" required>
+        <label for="all">Show All Available Centers</label><br>
+        <input type="radio" name="searchby" value="2" required>
+        <label for="highestrated">Show highest rated centers</label><br>
+        <input type="radio" name="searchby" value="3" required>
+        <label for="name">Search by center name</label>
+        <input type="text" name="centerName"><br>
+        <input type="radio" name="searchby" value="4" required>
+        <label for="location">Search by Location</label>
+        <input type="text" name="location"><br>
+        <button type="submit">Search</button>
+    </form>
+    <table>
+         <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Location</th>
+            <th>Number of Reviews</th>
+        </tr>
+        {% for center in centers %}
+        <tr>
+            <td>{{ center.name }}</td>
+            <td>{{ center.rating }}</td>
+            <td>{{ center.location }}</td>
+            <td>{{ center.reviews }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
