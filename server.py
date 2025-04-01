@@ -10,8 +10,8 @@ app.secret_key = 'your_secret_key_here'
 # --- Email Configuration (ADD YOUR DETAILS HERE) ---
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'mail to be used by server@gmail.com'  # Use your actual Gmail address
-app.config['MAIL_PASSWORD'] = 'mail to be used by server>Manage Account>Security>App Password'     # Use your generated App Password
+app.config['MAIL_USERNAME'] = 'mail to be used by server@gmail.com'  # Use your actual Gmail address- MANDATORY MODIFICATION 1 (MM1)
+app.config['MAIL_PASSWORD'] = 'mail to be used by server>Manage Account>Security>App Password'     # Use your generated App Password- MM2
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
@@ -25,8 +25,8 @@ password_reset_tokens = {}
 
 # User database (replace with DB in production)
 users = {
-    'abc': {'password': 'student', 'email': 'abc.@gmail.com'},
-    'abc': {'password': 'student', 'email': 'abc@gmail.com'},
+    'USER1': {'password': 'PASSWORD1', 'email': 'abc1@gmail.com'}, #MM3
+    'USER2': {'password': 'PASSWORD2', 'email': 'abc2@gmail.com'},  #MM4
 }
 
 # --- Routes ---
@@ -72,7 +72,7 @@ def forgot_password():
             # Send email (REPLACE WITH YOUR EMAIL IN THE 'sender' FIELD)
             msg = Message(
                 'Password Reset Request',
-                sender='mail to be used by server- same as before@gmail.com',  # << MUST MATCH MAIL_USERNAME
+                sender='mail to be used by server- same as before@gmail.com',  # << MUST MATCH MAIL_USERNAME MM5
                 recipients=[email]
             )
             msg.body = f"""To reset your password, visit:
